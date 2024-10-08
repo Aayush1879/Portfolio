@@ -1,0 +1,15 @@
+
+.cursor{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Ensure the custom cursor does not block interactions */
+    z-index: 1000; /* Ensure the custom cursor is on top of other elements */
+    transform: translate(-50%, -50%);
+
+  
+}

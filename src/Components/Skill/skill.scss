@@ -1,0 +1,79 @@
+@import "../../App.scss";
+
+.skillSet {
+    padding: 2rem 1rem;
+    text-align: center;
+    
+    h2 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 2rem;
+    }
+  
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.25rem;
+      justify-content: center;
+  
+      @include mobile {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); // Two columns on mobile
+        gap: 1.5rem;
+        height: 500px; // Fixed height for scrollable area
+        overflow-y: auto;
+        padding-bottom: 1rem;
+        scroll-snap-type: y mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+      &:hover .skill-card {
+        filter: blur(5px);
+        transform: scale(0.95); // Shrink other images slightly
+        transition: all 0.3s ease;
+      }
+      .skill-card:hover {
+        filter: none; // Remove blur from hovered image
+        transform: scale(1.1); // Make hovered image pop out
+        z-index: 1; // Ensure the hovered image is above others
+        transition: all 0.3s ease;
+      }  
+  
+      @include tablet {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  
+    .skill-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      
+      img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 1rem;
+        object-fit: contain;
+  
+        @include mobile {
+          width: 60px;
+          height: 60px;
+        }
+      }
+  
+      h3 {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 1rem;
+  
+        @include mobile {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+  
