@@ -5,20 +5,27 @@ import './certificate.scss';
     const items = [
         {
             id: 1,
+            title: "Full-Stack Web Development",
+            img: "./certi(4).png",
+            desc: "Learned Full-Stack Web Development through this course, made projects",
+            ref: "./COURSERA_CERTIFICATE.pdf",
+        },
+        {
+            id: 2,
             title: "Java 1",
             img: "./certi(2).png",
             desc: "Learned basic java and understood the concepts of programming.",
             ref: "./COURSERA_CERTIFICATE.pdf",
         },
         {
-            id: 2,
+            id: 3,
             title: "Java 2",
             img: "./certi(3).png",
             desc: "Learned advanced java and data structures",
             ref: "./Inheritance certi.pdf"
         },
         {
-            id: 3,
+            id: 4,
             title: "Frontend development",
             img: "./certi(1).png",
             desc: "Learned about Front-End web development through this amazing course and the main thing it taught me was to stay disciplined through the learning phase",
@@ -43,7 +50,7 @@ import './certificate.scss';
                         <motion.div className="textContainer" style={{y}}>
                             <h2>{item.title}</h2>
                             <p>{item.desc}</p>
-                            <button><a href={item.ref} target="_blank" >Click to see certificate</a></button>
+                            {/* <button><a href={item.ref} target="_blank" >Click to see certificate</a></button> */}
                         </motion.div>
                     </div>
                 </div>
