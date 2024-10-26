@@ -94,7 +94,7 @@
         
         @include mobile {
           transform: none !important;
-          padding: 10px;
+          padding: 7px;
           align-items: center;
           text-align: center;
         }
@@ -110,7 +110,7 @@
         h2 {
           font-size: 50px;
           @include mobile {
-            font-size: 36px;
+            font-size: 25px;
           }
           @include tablet {
             font-size: 48px;
