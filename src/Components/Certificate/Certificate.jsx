@@ -1,85 +1,93 @@
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import './certificate.scss';
 
-    const items = [
-        {
-            id: 1,
-            title: "Full-Stack Web Development",
-            img: "./certi(4).png",
-            desc: "Learned Full-Stack Web Development through this course, made projects",
-            ref: "./COURSERA_CERTIFICATE.pdf",
-        },
-        {
-            id: 2,
-            title: "Java 1",
-            img: "./certi(2).png",
-            desc: "Learned basic java and understood the concepts of programming.",
-            ref: "./COURSERA_CERTIFICATE.pdf",
-        },
-        {
-            id: 3,
-            title: "Java 2",
-            img: "./certi(3).png",
-            desc: "Learned advanced java and data structures",
-            ref: "./Inheritance certi.pdf"
-        },
-        {
-            id: 4,
-            title: "Frontend development",
-            img: "./certi(1).png",
-            desc: "Learned about Front-End web development through this amazing course and the main thing it taught me was to stay disciplined through the learning phase",
-            ref: "./certificate(coursera).pdf"
-        },
-    ];
+const certs = [
+  {
+    id: 1,
+    title: "Machine Learning with Python",
+    issuer: "Coursera",
+    img: "🤖",
+    date: "2026",
+    credId: "MLP-2026",
+    ref: "./Coursera_Machine_Learning.pdf",
+    img2: "./ML_certi.png",
+  },
+  {
+    id: 2,
+    title: "Frontend Development",
+    issuer: "Coursera",
+    img: "💻",
+    date: "2023",
+    credId: "FED-2023",
+    ref: "./certificate(coursera).pdf",
+    img2: "./certi(1).png",
+  },
+  {
+    id: 3,
+    title: "Full-Stack Web Development",
+    issuer: "Coursera",
+    img: "🎓",
+    date: "2024",
+    credId: "FSWD-2024",
+    ref: "./COURSERA_CERTIFICATE.pdf",
+    img2: "./certi(4).png",
+  },
+  {
+    id: 4,
+    title: "Java Programming 2 (Advanced)",
+    issuer: "Coursera",
+    img: "🔷",
+    date: "2023",
+    credId: "JAVA2-2023",
+    ref: "./Inheritance certi.pdf",
+    img2: "./certi(3).png",
+  },
+];
 
-    const Single = ({item})=>{
-        const ref = useRef();
-        const { scrollYProgress } = useScroll({
-            target: ref,
-        });
-        const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1 } }
+};
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
 
-        return (
-            <section >
-                <div className="container">
-                    <div className="wrapper">
-                        <div className="imageContainer" ref={ref}>
-                            <img src={item.img} alt="" />
-                        </div>
-                        <motion.div className="textContainer" style={{y}}>
-                            <h2>{item.title}</h2>
-                            <p>{item.desc}</p>
-                            {/* <button><a href={item.ref} target="_blank" >Click to see certificate</a></button> */}
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
-        )
-    }
+export default function Certificate() {
+  return (
+    <motion.div
+      className="certificates"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-80px" }}
+      variants={container}
+    >
+      <motion.div className="cert-header" variants={fadeUp}>
+        <div className="cert-badge">🏅 Professional Credentials</div>
+        <h1>Certifications</h1>
+        <p>Industry-recognized certifications that validate my expertise in web development and machine learning.</p>
+      </motion.div>
 
-export default function Certificate(){
-    const ref = useRef();
-
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["end end", "start start"],
-    });
-
-    const scaleX = useSpring(scrollYProgress, {
-        stiffness: 50,
-        damping: 50,
-    });
-
-    return (
-        <div className='certificate'>
-            <div className="progress">
-                {/* <h1>Certificates</h1> */}
-                <motion.div className="progressbar" style={{ scaleX }}></motion.div>
+      <div className="cert-grid">
+        {certs.map((cert) => (
+          <motion.div className="cert-card" key={cert.id} variants={fadeUp} whileHover={{ y: -3 }}>
+            <div className="cert-card-top">
+              <div className="cert-icon">{cert.img}</div>
+              <div className="cert-info">
+                <span className="cert-title">{cert.title}</span>
+                <span className="cert-issuer">{cert.issuer}</span>
+              </div>
             </div>
-            {items.map((item)=>(
-                <Single item={item} key={item.id}></Single>
-            ))}
+            <div className="cert-meta">
+              <span>📅 {cert.date}</span>
+              <span>🔖 {cert.credId}</span>
             </div>
-    )
+            <a href={cert.ref} target="_blank" rel="noreferrer" className="cert-link">
+              View Credential ↗
+            </a>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
+  );
 }

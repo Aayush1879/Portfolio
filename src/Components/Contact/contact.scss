@@ -1,115 +1,139 @@
 @import "../../App.scss";
 
-.contact{
-    height: 100%;
-    max-width: 1366px;
-    margin: auto;
+.contact {
+  padding: 100px 80px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+
+  @include mobile { padding: 80px 24px; }
+  @include tablet { padding: 80px 40px; }
+
+  .contact-header {
+    text-align: center;
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 15px;
+    }
+  }
+
+  .contact-form {
+    width: 100%;
+    max-width: 520px;
     display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    input, textarea {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 14px 18px;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color 0.2s;
+      resize: none;
+
+      &::placeholder { color: var(--text-muted); }
+      &:focus { border-color: var(--border-hover); }
+    }
+
+    button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: var(--radius-lg);
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 500;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background 0.2s, transform 0.1s;
+
+      &:hover:not(:disabled) {
+        background: var(--accent-hover);
+        transform: translateY(-1px);
+      }
+
+      &:disabled { opacity: 0.6; cursor: not-allowed; }
+    }
+
+    .msg {
+      font-size: 13px;
+      text-align: center;
+      padding: 10px;
+      border-radius: var(--radius);
+
+      &.success {
+        background: rgba(34, 197, 94, 0.1);
+        color: #22c55e;
+        border: 1px solid rgba(34,197,94,0.2);
+      }
+
+      &.error {
+        background: rgba(239, 68, 68, 0.1);
+        color: #ef4444;
+        border: 1px solid rgba(239,68,68,0.2);
+      }
+    }
+  }
+
+  .contact-socials {
+    display: flex;
+    gap: 24px;
     align-items: center;
-    gap: 50px;
-    @include mobile {
-        width: 100%;
-        padding: 10px;
-        flex-direction: column;
+
+    a {
+      color: var(--text-muted);
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+
+      &:hover { color: var(--text-primary); }
     }
-    @include tablet {
-        flex-direction: column;
-        gap: 30px;
-        padding: 20px;
-    }
- 
+  }
 
-    .textContainer{
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-        @include mobile {
-            gap: 20px;
-            text-align: center;
-            align-items: center;
-            margin-top: 60px;
-        }
-        @include tablet {
-            gap: 30px;
-            text-align: center;
-            align-items: center;
-            margin-top: 40px;
-        }
+  .contact-footer {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+  }
+}
 
-        h1{
-            font-size: 100px;
-            line-height: 88px;
-            @include mobile {
-                font-size: 28px;
-            }
-        }
-        h2{
-            @include mobile{
-                font-size: 18px;
-            }
-        }
+.contact-email-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border-radius: 50px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 14px;
+  transition: all 0.2s ease;
 
-        span{
-            font-weight: 300;
-        }
-    } 
-
-    .formContainer{
-        flex: 1;
-        position: relative;
-        @include mobile {
-            padding: 50px;
-            width: 100%;
-        }
-        @include tablet {
-            padding: 40px;
-            width: 90%;
-        }
-
-        // .phoneSvg{
-        //     stroke: orange;
-        //     position: absolute;
-        //     margin: auto;
-        //     z-index: -1;
-        // }
-
-        form{
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-
-            input,
-            textarea{
-                padding: 20px;
-                background-color: transparent;
-                border: 1px solid white;
-                color: black;
-                border-radius: 5px;
-
-                @include mobile {
-                    padding: 10px;
-                }
-                @include tablet {
-                    padding: 15px;
-                }
-            } 
-            
-
-            button{
-                padding: 20px;
-                border: none;
-                background-color: black;
-                cursor: pointer;
-                color: white;
-                font-weight: 500;
-                @include mobile {
-                    padding: 10px;
-                }
-                @include tablet {
-                    padding: 15px;
-                }
-            }
-        }
-    }
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(59, 130, 246, 0.05);
+  }
 }

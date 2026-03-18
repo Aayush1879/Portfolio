@@ -1,37 +1,51 @@
-html{
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg: #080808;
+  --bg-card: #111111;
+  --bg-card-hover: #161616;
+  --border: #1e1e1e;
+  --border-hover: #333333;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --text-primary: #f0f0f0;
+  --text-secondary: #888888;
+  --text-muted: #444444;
+  --radius: 12px;
+  --radius-lg: 20px;
 }
-*{
+
+html { scroll-behavior: smooth; }
+
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "DM sans",sans-serif;
 }
-body{
-  background-color: white;
-  color: black;
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
-a{
+
+a {
   text-decoration: none;
-  color: black;
+  color: inherit;
 }
-section{
-  height: 100vh;
-  scroll-snap-align: center;
-}
+
+section { scroll-margin-top: 80px; }
+
 @mixin mobile {
-  @media (max-width: 768px) {
-    @content;
-  }
+  @media (max-width: 768px) { @content; }
 }
+
 @mixin tablet {
-  @media (min-width: 769px) and (max-width: 1024px) {
-    @content;
-  }
+  @media (min-width: 769px) and (max-width: 1024px) { @content; }
 }
+
 @mixin desktop {
-  @media (max-width: 1366px) {
-    @content;
-  }
+  @media (max-width: 1366px) { @content; }
 }
