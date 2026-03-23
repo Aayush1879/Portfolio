@@ -17,12 +17,12 @@ const projects = [
   {
     id: 2,
     title: "Health Insurance Cost Predictor",
-    img: "",
+    img: "Insurance-pred.png",
     badge: "🔬 ML · In Progress",
     desc: "Predicting individual health insurance charges using regression models. Analysing feature relationships between age, BMI, smoking status, and regional factors to build an accurate cost estimator.",
     tags: ["Python", "Scikit-learn", "Pandas", "Matplotlib", "Seaborn"],
     demo: null,
-    github: "https://github.com/Aayush1879",
+    github: "https://github.com/Aayush1879/Insurance_Predictor.git",
   },
   {
     id: 3,
